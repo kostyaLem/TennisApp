@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TennisModels" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=C:\Users\kslm\Desktop\TennisApp\TennisApp\baza.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="IdealParameters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="age" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="gender" Type="integer" Nullable="false" />
+          <Property Name="excursion" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="dinamometry" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="image" Type="blob" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="level" Type="integer" Nullable="false" />
+          <Property Name="textTraining" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="trainingTypeId" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingImage">
+          <Key>
+            <PropertyRef Name="idTraining" />
+            <PropertyRef Name="idImage" />
+          </Key>
+          <Property Name="idTraining" Type="integer" Nullable="false" />
+          <Property Name="idImage" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="gender" Type="integer" Nullable="false" />
+          <Property Name="dateOfBirth" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="hashPassword" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="IsDefaultUser" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserParameters">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="dateOfSParametersSet" />
+          </Key>
+          <Property Name="idUser" Type="integer" Nullable="false" />
+          <Property Name="weight" Type="real" Nullable="false" />
+          <Property Name="height" Type="real" Nullable="false" />
+          <Property Name="excursion" Type="real" Nullable="false" />
+          <Property Name="dynamometry" Type="real" Nullable="false" />
+          <Property Name="dateOfStart" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="dateOfEnd" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="dateOfSParametersSet" Type="integer" Nullable="false" />
+          <Property Name="IdTraining" Type="integer" Nullable="false" />
+          <Property Name="level" Type="integer" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Training_0_0">
+          <End Role="TrainingType" Type="Self.TrainingType" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="trainingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingImage_0_0">
+          <End Role="Image" Type="Self.Image" Multiplicity="1" />
+          <End Role="TrainingImage" Type="Self.TrainingImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TrainingImage">
+              <PropertyRef Name="idImage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TrainingImage_1_0">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="TrainingImage" Type="Self.TrainingImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TrainingImage">
+              <PropertyRef Name="idTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserParameters_0_0">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="UserParameters" Type="Self.UserParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserParameters">
+              <PropertyRef Name="IdTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserParameters_1_0">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserParameters" Type="Self.UserParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserParameters">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище TennisModelsContainer">
+          <EntitySet Name="IdealParameters" EntityType="Self.IdealParameters" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" store:Type="Tables" />
+          <EntitySet Name="Training" EntityType="Self.Training" store:Type="Tables" />
+          <EntitySet Name="TrainingImage" EntityType="Self.TrainingImage" store:Type="Tables" />
+          <EntitySet Name="TrainingType" EntityType="Self.TrainingType" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" store:Type="Tables" />
+          <EntitySet Name="UserParameters" EntityType="Self.UserParameters" store:Type="Tables" />
+          <AssociationSet Name="FK_Training_0_0" Association="Self.FK_Training_0_0">
+            <End Role="TrainingType" EntitySet="TrainingType" />
+            <End Role="Training" EntitySet="Training" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingImage_0_0" Association="Self.FK_TrainingImage_0_0">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="TrainingImage" EntitySet="TrainingImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TrainingImage_1_0" Association="Self.FK_TrainingImage_1_0">
+            <End Role="Training" EntitySet="Training" />
+            <End Role="TrainingImage" EntitySet="TrainingImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserParameters_0_0" Association="Self.FK_UserParameters_0_0">
+            <End Role="Training" EntitySet="Training" />
+            <End Role="UserParameters" EntitySet="UserParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserParameters_1_0" Association="Self.FK_UserParameters_1_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserParameters" EntitySet="UserParameters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TennisModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IdealParameter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="age" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="Int64" Nullable="false" />
+          <Property Name="excursion" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dinamometry" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="image1" Type="Binary" MaxLength="2147483647" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Trainings" Relationship="Self.TrainingImage" FromRole="Image" ToRole="Training" />
+        </EntityType>
+        <EntityType Name="Training">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="level" Type="Int64" Nullable="false" />
+          <Property Name="textTraining" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="trainingTypeId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="TrainingType" Relationship="Self.FK_Training_0_0" FromRole="Training" ToRole="TrainingType" />
+          <NavigationProperty Name="UserParameters" Relationship="Self.FK_UserParameters_0_0" FromRole="Training" ToRole="UserParameters" />
+          <NavigationProperty Name="Images" Relationship="Self.TrainingImage" FromRole="Training" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="TrainingType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Trainings" Relationship="Self.FK_Training_0_0" FromRole="TrainingType" ToRole="Training" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="Int64" Nullable="false" />
+          <Property Name="dateOfBirth" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hashPassword" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDefaultUser" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="UserParameters" Relationship="Self.FK_UserParameters_1_0" FromRole="User" ToRole="UserParameters" />
+        </EntityType>
+        <EntityType Name="UserParameter">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="dateOfSParametersSet" />
+          </Key>
+          <Property Name="idUser" Type="Int64" Nullable="false" />
+          <Property Name="weight" Type="Double" Nullable="false" />
+          <Property Name="height" Type="Double" Nullable="false" />
+          <Property Name="excursion" Type="Double" Nullable="false" />
+          <Property Name="dynamometry" Type="Double" Nullable="false" />
+          <Property Name="dateOfStart" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateOfEnd" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateOfSParametersSet" Type="Int64" Nullable="false" />
+          <Property Name="IdTraining" Type="Int64" Nullable="false" />
+          <Property Name="level" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Training" Relationship="Self.FK_UserParameters_0_0" FromRole="UserParameters" ToRole="Training" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserParameters_1_0" FromRole="UserParameters" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Training_0_0">
+          <End Role="TrainingType" Type="Self.TrainingType" Multiplicity="1" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Training">
+              <PropertyRef Name="trainingTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserParameters_0_0">
+          <End Role="Training" Type="Self.Training" Multiplicity="1" />
+          <End Role="UserParameters" Type="Self.UserParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Training">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserParameters">
+              <PropertyRef Name="IdTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserParameters_1_0">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserParameters" Type="Self.UserParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserParameters">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TrainingImage">
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <End Role="Training" Type="Self.Training" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TennisContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IdealParameters" EntityType="Self.IdealParameter" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Trainings" EntityType="Self.Training" />
+          <EntitySet Name="TrainingTypes" EntityType="Self.TrainingType" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserParameters" EntityType="Self.UserParameter" />
+          <AssociationSet Name="FK_Training_0_0" Association="Self.FK_Training_0_0">
+            <End Role="TrainingType" EntitySet="TrainingTypes" />
+            <End Role="Training" EntitySet="Trainings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserParameters_0_0" Association="Self.FK_UserParameters_0_0">
+            <End Role="Training" EntitySet="Trainings" />
+            <End Role="UserParameters" EntitySet="UserParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserParameters_1_0" Association="Self.FK_UserParameters_1_0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserParameters" EntitySet="UserParameters" />
+          </AssociationSet>
+          <AssociationSet Name="TrainingImage" Association="Self.TrainingImage">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Training" EntitySet="Trainings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TennisModelsContainer" CdmEntityContainer="TennisContext">
+          <EntitySetMapping Name="IdealParameters">
+            <EntityTypeMapping TypeName="TennisModels.IdealParameter">
+              <MappingFragment StoreEntitySet="IdealParameters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="excursion" ColumnName="excursion" />
+                <ScalarProperty Name="dinamometry" ColumnName="dinamometry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="TennisModels.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image1" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainings">
+            <EntityTypeMapping TypeName="TennisModels.Training">
+              <MappingFragment StoreEntitySet="Training">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="textTraining" ColumnName="textTraining" />
+                <ScalarProperty Name="trainingTypeId" ColumnName="trainingTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainingTypes">
+            <EntityTypeMapping TypeName="TennisModels.TrainingType">
+              <MappingFragment StoreEntitySet="TrainingType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TennisModels.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="hashPassword" ColumnName="hashPassword" />
+                <ScalarProperty Name="IsDefaultUser" ColumnName="IsDefaultUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserParameters">
+            <EntityTypeMapping TypeName="TennisModels.UserParameter">
+              <MappingFragment StoreEntitySet="UserParameters">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="excursion" ColumnName="excursion" />
+                <ScalarProperty Name="dynamometry" ColumnName="dynamometry" />
+                <ScalarProperty Name="dateOfStart" ColumnName="dateOfStart" />
+                <ScalarProperty Name="dateOfEnd" ColumnName="dateOfEnd" />
+                <ScalarProperty Name="dateOfSParametersSet" ColumnName="dateOfSParametersSet" />
+                <ScalarProperty Name="IdTraining" ColumnName="IdTraining" />
+                <ScalarProperty Name="level" ColumnName="level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="TrainingImage" TypeName="TennisModels.TrainingImage" StoreEntitySet="TrainingImage">
+            <EndProperty Name="Image">
+              <ScalarProperty Name="id" ColumnName="idImage" />
+            </EndProperty>
+            <EndProperty Name="Training">
+              <ScalarProperty Name="id" ColumnName="idTraining" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
