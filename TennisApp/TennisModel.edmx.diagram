@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e3599aa22fa940cebd70e03a2f4a43d5" Name="Diagram1">
+      <Diagram DiagramId="c3f13263a9d042248892f48746e7bb6c" Name="Diagram1">
         <EntityTypeShape EntityType="TennisModels.IdealParameter" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TennisModels.Image" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TennisModels.Training" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TennisModels.TrainingType" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TennisModels.User" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TennisModels.Image" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TennisModels.Training" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TennisModels.TrainingType" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TennisModels.User" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TennisModels.UserParameter" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="TennisModels.FK_Training_0_0" ManuallyRouted="false" />
         <AssociationConnector Association="TennisModels.FK_UserParameters_0_0" ManuallyRouted="false" />

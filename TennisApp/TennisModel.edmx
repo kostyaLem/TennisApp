@@ -62,7 +62,7 @@
         <EntityType Name="UserParameters">
           <Key>
             <PropertyRef Name="idUser" />
-            <PropertyRef Name="dateOfSParametersSet" />
+            <PropertyRef Name="dateOfStart" />
           </Key>
           <Property Name="idUser" Type="integer" Nullable="false" />
           <Property Name="weight" Type="real" Nullable="false" />
@@ -71,7 +71,6 @@
           <Property Name="dynamometry" Type="real" Nullable="false" />
           <Property Name="dateOfStart" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="dateOfEnd" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="dateOfSParametersSet" Type="integer" Nullable="false" />
           <Property Name="IdTraining" Type="integer" Nullable="false" />
           <Property Name="level" Type="integer" Nullable="false" />
         </EntityType>
@@ -224,7 +223,7 @@
         <EntityType Name="UserParameter">
           <Key>
             <PropertyRef Name="idUser" />
-            <PropertyRef Name="dateOfSParametersSet" />
+            <PropertyRef Name="dateOfStart" />
           </Key>
           <Property Name="idUser" Type="Int64" Nullable="false" />
           <Property Name="weight" Type="Double" Nullable="false" />
@@ -233,7 +232,6 @@
           <Property Name="dynamometry" Type="Double" Nullable="false" />
           <Property Name="dateOfStart" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dateOfEnd" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dateOfSParametersSet" Type="Int64" Nullable="false" />
           <Property Name="IdTraining" Type="Int64" Nullable="false" />
           <Property Name="level" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Training" Relationship="Self.FK_UserParameters_0_0" FromRole="UserParameters" ToRole="Training" />
@@ -370,7 +368,6 @@
                 <ScalarProperty Name="dynamometry" ColumnName="dynamometry" />
                 <ScalarProperty Name="dateOfStart" ColumnName="dateOfStart" />
                 <ScalarProperty Name="dateOfEnd" ColumnName="dateOfEnd" />
-                <ScalarProperty Name="dateOfSParametersSet" ColumnName="dateOfSParametersSet" />
                 <ScalarProperty Name="IdTraining" ColumnName="IdTraining" />
                 <ScalarProperty Name="level" ColumnName="level" />
               </MappingFragment>

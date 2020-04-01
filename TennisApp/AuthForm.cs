@@ -29,7 +29,8 @@ namespace TennisApp
              {
                  try
                  {
-                     TennisSettings.TennisContext.UserParameters.ToArray();
+                     TennisSettings.TennisContext.Users.ToArray();
+                     _connectionSuccessful = true;
                  }
                  catch (Exception)
                  {
@@ -67,8 +68,10 @@ namespace TennisApp
 
             var user = TennisSettings.TennisContext.Users.FirstOrDefault(u => u.login == login && u.hashPassword == passwordHash);
             if (user != null)
-            {
-                //TODO: показать что-то
+            {                
+                this.Visible = false;
+                new MainForm(user).ShowDialog();
+                this.Visible = true;
             }
             else
             {

@@ -85,7 +85,7 @@
             this.txtLogin.MaxLength = 32767;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.PasswordChar = '\0';
-            this.txtLogin.WaterMark = "Введите логин";
+            this.txtLogin.PromptText = "Введите логин";
             this.txtLogin.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtLogin.SelectedText = "";
             this.txtLogin.SelectionLength = 0;
@@ -119,7 +119,7 @@
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.WaterMark = "Введите пароль";
+            this.txtPassword.PromptText = "Введите пароль";
             this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtPassword.SelectedText = "";
             this.txtPassword.SelectionLength = 0;
@@ -136,6 +136,7 @@
             resources.ApplyResources(this.btnReg, "btnReg");
             this.btnReg.Name = "btnReg";
             this.btnReg.UseSelectable = true;
+            this.btnReg.UseStyleColors = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // btnAuth
@@ -144,7 +145,6 @@
             resources.ApplyResources(this.btnAuth, "btnAuth");
             this.btnAuth.Name = "btnAuth";
             this.btnAuth.UseSelectable = true;
-            this.btnAuth.UseStyleColors = true;
             this.btnAuth.Click += new System.EventHandler(this.btnAuth_Click);
             // 
             // metroProgressSpinner1

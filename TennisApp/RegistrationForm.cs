@@ -19,50 +19,59 @@ namespace TennisApp
         {
             //TODO: check if user existed and fields is empty
 
-            User user = CreateUser();
-            UserParameter userParams = CreateUserParameter();
-            user.UserParameters.Add(userParams);
-
-            var gender = (rbMen.Checked) ? 0 : 1;
-            var age = GetAge(dtpDateBirthday.Value);
-
-            var idealParams = TennisSettings.TennisContext.IdealParameters.FirstOrDefault(new Func<IdealParameter, bool>(param =>
+            try
             {
-                var interval = param.age.Split('-').Select(x => int.Parse(x)).ToArray();
-                var (lowerAge, upperAge) = (interval[0], interval[1]);
+                User user = CreateUser();
+                UserParameter userParams = CreateUserParameter();
+                user.UserParameters.Add(userParams);
 
-                return (InRange(lowerAge, upperAge, age) && param.gender == gender) ? true : false;
-            }));
+                var gender = (rbMen.Checked) ? 0 : 1;
+                var age = GetAge(dtpDateBirthday.Value);
 
-            if (idealParams != null)
-            {
-                var idealWeight = (rbMen.Checked) ? 0.9 * (userParams.height - 100) : 0.85 * (userParams.height - 100);
-                var idealDyn = idealParams.dinamometry.Split('-').Select(x => double.Parse(x.Replace('.',','))).ToArray();
-
-                var (lowerWeight, upperWeight) = (idealWeight - 5, idealWeight + 5);
-                var (lowerDyn, upperDyn) = (idealDyn[0], idealDyn[1]);
-
-                if (double.Parse(idealParams.excursion) < userParams.excursion ||
-                    !InRange(lowerWeight, upperWeight, userParams.weight))
+                var idealParams = TennisSettings.TennisContext.IdealParameters.FirstOrDefault(new Func<IdealParameter, bool>(param =>
                 {
-                    userParams.Training = GetTraining(userParams, TrainingTypes.WeightAndExcursion);
-                }
-                else if (!InRange(lowerDyn, upperDyn, userParams.dynamometry) || 
-                    !PowerIsNormal(userParams.dynamometry/userParams.weight, gender))
+                    var interval = param.age.Split('-').Select(x => int.Parse(x)).ToArray();
+                    var (lowerAge, upperAge) = (interval[0], interval[1]);
+
+                    return (InRange(lowerAge, upperAge, age) && param.gender == gender) ? true : false;
+                }));
+
+                if (idealParams != null)
                 {
-                    userParams.Training = GetTraining(userParams, TrainingTypes.DynamometryAndForse);
+                    var idealWeight = (rbMen.Checked) ? 0.9 * (userParams.height - 100) : 0.85 * (userParams.height - 100);
+                    var idealDyn = idealParams.dinamometry.Split('-').Select(x => double.Parse(x.Replace('.', ','))).ToArray();
+
+                    var (lowerWeight, upperWeight) = (idealWeight - 5, idealWeight + 5);
+                    var (lowerDyn, upperDyn) = (idealDyn[0], idealDyn[1]);
+
+                    if (double.Parse(idealParams.excursion) < userParams.excursion ||
+                        !InRange(lowerWeight, upperWeight, userParams.weight))
+                    {
+                        userParams.Training = GetTraining(userParams, TrainingTypes.WeightAndExcursion);
+                    }
+                    else if (!InRange(lowerDyn, upperDyn, userParams.dynamometry) ||
+                        !PowerIsNormal(userParams.dynamometry / userParams.weight, gender))
+                    {
+                        userParams.Training = GetTraining(userParams, TrainingTypes.DynamometryAndForse);
+                    }
+                    else
+                    {
+                        userParams.Training = GetTraining(userParams, TrainingTypes.IdealParams);
+                    }
+
+                    TennisSettings.TennisContext.Users.Add(user);
+                    TennisSettings.TennisContext.SaveChanges();
+
+                    MetroMessageBox.Show(this, $"Пользователь с ником {user.login} успешно зарегистрирован.", "Сообщение");
                 }
                 else
                 {
-                    userParams.Training = GetTraining(userParams, TrainingTypes.IdealParams);
+                    MetroMessageBox.Show(this, "Не удалось определить \"уровень\" по заданным параметрам...", "Сообщение");
                 }
-
-                TennisSettings.TennisContext.Users.Add(user);               
-                TennisSettings.TennisContext.SaveChanges();
             }
-            else
+            catch (Exception exc)
             {
-                MetroMessageBox.Show(this, "Не удалось определить \"уровень\" по заданным параметрам...");
+                MetroMessageBox.Show(this, $"Не удалось зарегистрировать пользователя\nДополнительно:{exc}", "Сообщение", 300);
             }
         }
 
@@ -80,9 +89,8 @@ namespace TennisApp
                 weight = double.Parse(txtWeight.Text.Trim()),
                 dynamometry = double.Parse(txtDin.Text.Trim()),
                 excursion = double.Parse(txtExc.Text.Trim()),
-                dateOfStart = DateTime.Now.ToString(),
-                dateOfEnd = DateTime.Now.AddDays(30).ToString(),
-                // dateOfSParametersSet = DateTime.Now.ToString()
+                dateOfStart = DateTime.Now.ToShortDateString(),
+                dateOfEnd = DateTime.Now.AddMonths(1).ToShortDateString()
             };
         }
 

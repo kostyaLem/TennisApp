@@ -21,7 +21,6 @@ namespace TennisApp
         public double dynamometry { get; set; }
         public string dateOfStart { get; set; }
         public string dateOfEnd { get; set; }
-        public long dateOfSParametersSet { get; set; }
         public long IdTraining { get; set; }
         public long level { get; set; }
     
