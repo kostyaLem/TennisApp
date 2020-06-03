@@ -86,6 +86,7 @@
             this.btnStartNew.TabIndex = 51;
             this.btnStartNew.Text = "Начать новую тренировку";
             this.btnStartNew.UseSelectable = true;
+            this.btnStartNew.Click += new System.EventHandler(this.btnStartNew_Click);
             // 
             // lblStart
             // 
@@ -126,18 +127,12 @@
             // 
             // txtTraining
             // 
-            this.txtTraining.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTraining.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTraining.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTraining.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtTraining.Location = new System.Drawing.Point(23, 145);
+            this.txtTraining.AcceptsReturn = true;
+            this.txtTraining.AcceptsTab = true;
+            this.txtTraining.Location = new System.Drawing.Point(23, 117);
             this.txtTraining.Multiline = true;
             this.txtTraining.Name = "txtTraining";
-            this.txtTraining.ReadOnly = true;
-            this.txtTraining.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTraining.Size = new System.Drawing.Size(774, 356);
+            this.txtTraining.Size = new System.Drawing.Size(774, 400);
             this.txtTraining.TabIndex = 54;
             // 
             // MainForm

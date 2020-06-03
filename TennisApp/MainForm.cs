@@ -1,4 +1,5 @@
 ﻿using MetroFramework.Forms;
+using System;
 using System.Linq;
 
 namespace TennisApp
@@ -21,7 +22,7 @@ namespace TennisApp
             var userParams = _user.UserParameters.Last();
 
             Text = $"Тренировка: {_user.surname} {_user.name}";
-            txtTraining.Text = userParams.Training.textTraining;
+            txtTraining.Text = userParams.Training.textTraining.Replace("\n", Environment.NewLine);
             lblStart.Text = userParams.dateOfStart;
             lblEnd.Text = userParams.dateOfEnd;
         }
@@ -29,6 +30,11 @@ namespace TennisApp
         private void btnExit_Click(object sender, System.EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnStartNew_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

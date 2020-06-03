@@ -68,10 +68,19 @@ namespace TennisApp
 
             var user = TennisSettings.TennisContext.Users.FirstOrDefault(u => u.login == login && u.hashPassword == passwordHash);
             if (user != null)
-            {                
-                this.Visible = false;
-                new MainForm(user).ShowDialog();
-                this.Visible = true;
+            {
+                if (user.IsDefaultUser == 1)
+                {
+                    this.Visible = false;
+                    new MainForm(user).ShowDialog();
+                    this.Visible = true;
+                }
+                else
+                {
+                    this.Visible = false;
+                    new AdminForm().ShowDialog();
+                    this.Visible = true;
+                }
             }
             else
             {

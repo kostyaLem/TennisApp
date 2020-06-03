@@ -13,10 +13,28 @@ namespace TennisApp
         public RegistrationForm()
         {
             InitializeComponent();
+
+            this.Load += RegistrationForm_Load;
+        }
+
+        private void RegistrationForm_Load(object sender, EventArgs e)
+        {
+            TennisSettings.TennisContext.IdealParameters.ToList().ForEach(x =>
+            {
+                dtgIdealParams.Rows.Add(x.age, x.gender == 0 ? "М" : "Ж", x.dinamometry, x.excursion);
+            });
         }
 
         private void btnReg_Click(object sender, EventArgs e)
         {
+            var age = GetAge(dtpDateBirthday.Value);
+            if (age < 16 || age > 23)
+            {
+                MetroMessageBox.Show(this, $"Допустимый возраст: от 16 до 23", "Сообщение");
+                return;
+            }
+
+
             //TODO: check if user existed and fields is empty
 
             try
@@ -26,7 +44,6 @@ namespace TennisApp
                 user.UserParameters.Add(userParams);
 
                 var gender = (rbMen.Checked) ? 0 : 1;
-                var age = GetAge(dtpDateBirthday.Value);
 
                 var idealParams = TennisSettings.TennisContext.IdealParameters.FirstOrDefault(new Func<IdealParameter, bool>(param =>
                 {
@@ -141,9 +158,9 @@ namespace TennisApp
 
         private int GetAge(DateTime birthDate)
         {
-            var now = DateTime.Today;
-            return now.Year - birthDate.Year - 1 +
-                ((now.Month > birthDate.Month || now.Month == birthDate.Month && now.Day >= birthDate.Day) ? 1 : 0);
+            int now = int.Parse(DateTime.Now.ToString("yyyyMMdd"));
+            int dob = int.Parse(birthDate.ToString("yyyyMMdd"));
+            return (now - dob) / 10000;
         }
     }
 }

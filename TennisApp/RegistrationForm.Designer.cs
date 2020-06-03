@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.rnW = new MetroFramework.Controls.MetroRadioButton();
@@ -54,20 +58,30 @@
             this.txtExc = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.dtgIdealParams = new MetroFramework.Controls.MetroGrid();
+            this.idealAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idealGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idelExc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idealDin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.btnReg = new MetroFramework.Controls.MetroButton();
             this.tabControl.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
+            this.metroTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgIdealParams)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.metroTabPage1);
             this.tabControl.Controls.Add(this.metroTabPage2);
+            this.tabControl.Controls.Add(this.metroTabPage3);
             this.tabControl.Location = new System.Drawing.Point(23, 63);
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
-            this.tabControl.Size = new System.Drawing.Size(754, 241);
+            this.tabControl.SelectedIndex = 2;
+            this.tabControl.Size = new System.Drawing.Size(885, 358);
             this.tabControl.TabIndex = 0;
             this.tabControl.UseSelectable = true;
             // 
@@ -92,7 +106,7 @@
             this.metroTabPage1.HorizontalScrollbarSize = 10;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(746, 199);
+            this.metroTabPage1.Size = new System.Drawing.Size(877, 316);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Данные регистрации";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -103,7 +117,7 @@
             // 
             this.rnW.AutoSize = true;
             this.rnW.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
-            this.rnW.Location = new System.Drawing.Point(607, 134);
+            this.rnW.Location = new System.Drawing.Point(675, 208);
             this.rnW.Name = "rnW";
             this.rnW.Size = new System.Drawing.Size(44, 25);
             this.rnW.TabIndex = 59;
@@ -115,7 +129,7 @@
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel7.Location = new System.Drawing.Point(471, 134);
+            this.metroLabel7.Location = new System.Drawing.Point(539, 208);
             this.metroLabel7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(53, 25);
@@ -127,7 +141,7 @@
             // 
             this.rbMen.AutoSize = true;
             this.rbMen.FontSize = MetroFramework.MetroCheckBoxSize.Tall;
-            this.rbMen.Location = new System.Drawing.Point(557, 134);
+            this.rbMen.Location = new System.Drawing.Point(625, 208);
             this.rbMen.Name = "rbMen";
             this.rbMen.Size = new System.Drawing.Size(44, 25);
             this.rbMen.TabIndex = 57;
@@ -139,7 +153,7 @@
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel5.Location = new System.Drawing.Point(9, 134);
+            this.metroLabel5.Location = new System.Drawing.Point(11, 208);
             this.metroLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(154, 25);
@@ -149,7 +163,7 @@
             // 
             // dtpDateBirthday
             // 
-            this.dtpDateBirthday.Location = new System.Drawing.Point(168, 134);
+            this.dtpDateBirthday.Location = new System.Drawing.Point(170, 208);
             this.dtpDateBirthday.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtpDateBirthday.Name = "dtpDateBirthday";
             this.dtpDateBirthday.Size = new System.Drawing.Size(192, 29);
@@ -173,7 +187,7 @@
             this.txtName.CustomButton.Visible = false;
             this.txtName.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtName.Lines = new string[0];
-            this.txtName.Location = new System.Drawing.Point(168, 76);
+            this.txtName.Location = new System.Drawing.Point(170, 129);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.MaxLength = 32767;
             this.txtName.Name = "txtName";
@@ -209,7 +223,7 @@
             this.txtSurname.CustomButton.Visible = false;
             this.txtSurname.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtSurname.Lines = new string[0];
-            this.txtSurname.Location = new System.Drawing.Point(168, 21);
+            this.txtSurname.Location = new System.Drawing.Point(170, 53);
             this.txtSurname.Margin = new System.Windows.Forms.Padding(2);
             this.txtSurname.MaxLength = 32767;
             this.txtSurname.Name = "txtSurname";
@@ -232,7 +246,7 @@
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(107, 78);
+            this.metroLabel3.Location = new System.Drawing.Point(109, 131);
             this.metroLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(55, 25);
@@ -245,7 +259,7 @@
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel4.Location = new System.Drawing.Point(63, 23);
+            this.metroLabel4.Location = new System.Drawing.Point(65, 55);
             this.metroLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(99, 25);
@@ -272,7 +286,7 @@
             this.txtPassword.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtPassword.FontWeight = MetroFramework.MetroTextBoxWeight.Bold;
             this.txtPassword.Lines = new string[0];
-            this.txtPassword.Location = new System.Drawing.Point(534, 75);
+            this.txtPassword.Location = new System.Drawing.Point(602, 128);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.Name = "txtPassword";
@@ -308,7 +322,7 @@
             this.txtLogin.CustomButton.Visible = false;
             this.txtLogin.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtLogin.Lines = new string[0];
-            this.txtLogin.Location = new System.Drawing.Point(534, 20);
+            this.txtLogin.Location = new System.Drawing.Point(602, 55);
             this.txtLogin.Margin = new System.Windows.Forms.Padding(2);
             this.txtLogin.MaxLength = 32767;
             this.txtLogin.Name = "txtLogin";
@@ -331,7 +345,7 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(440, 77);
+            this.metroLabel2.Location = new System.Drawing.Point(508, 130);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(84, 25);
@@ -344,7 +358,7 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(454, 22);
+            this.metroLabel1.Location = new System.Drawing.Point(522, 57);
             this.metroLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(70, 25);
@@ -370,9 +384,9 @@
             this.metroTabPage2.HorizontalScrollbarSize = 10;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(746, 199);
+            this.metroTabPage2.Size = new System.Drawing.Size(877, 316);
             this.metroTabPage2.TabIndex = 1;
-            this.metroTabPage2.Text = "Параметры человека";
+            this.metroTabPage2.Text = "Физические параметры";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
@@ -382,7 +396,7 @@
             this.metroLabel12.AutoSize = true;
             this.metroLabel12.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel12.Location = new System.Drawing.Point(72, 140);
+            this.metroLabel12.Location = new System.Drawing.Point(101, 229);
             this.metroLabel12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel12.Name = "metroLabel12";
             this.metroLabel12.Size = new System.Drawing.Size(196, 25);
@@ -398,7 +412,7 @@
             "1 - Профессиональный",
             "2 - Нормальный",
             "3 - Начинающий"});
-            this.cmbLevel.Location = new System.Drawing.Point(279, 138);
+            this.cmbLevel.Location = new System.Drawing.Point(308, 227);
             this.cmbLevel.Name = "cmbLevel";
             this.cmbLevel.Size = new System.Drawing.Size(381, 29);
             this.cmbLevel.TabIndex = 63;
@@ -411,7 +425,7 @@
             // 
             this.txtDin.CustomButton.Image = null;
             this.txtDin.CustomButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtDin.CustomButton.Location = new System.Drawing.Point(111, 2);
+            this.txtDin.CustomButton.Location = new System.Drawing.Point(153, 2);
             this.txtDin.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.txtDin.CustomButton.Name = "";
             this.txtDin.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -422,7 +436,7 @@
             this.txtDin.CustomButton.Visible = false;
             this.txtDin.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtDin.Lines = new string[0];
-            this.txtDin.Location = new System.Drawing.Point(225, 80);
+            this.txtDin.Location = new System.Drawing.Point(190, 138);
             this.txtDin.Margin = new System.Windows.Forms.Padding(2);
             this.txtDin.MaxLength = 32767;
             this.txtDin.Name = "txtDin";
@@ -433,7 +447,7 @@
             this.txtDin.SelectionLength = 0;
             this.txtDin.SelectionStart = 0;
             this.txtDin.ShortcutsEnabled = true;
-            this.txtDin.Size = new System.Drawing.Size(137, 28);
+            this.txtDin.Size = new System.Drawing.Size(179, 28);
             this.txtDin.TabIndex = 62;
             this.txtDin.UseSelectable = true;
             this.txtDin.WaterMark = "Введите Динанометрию";
@@ -447,7 +461,7 @@
             // 
             this.txtWeight.CustomButton.Image = null;
             this.txtWeight.CustomButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtWeight.CustomButton.Location = new System.Drawing.Point(111, 2);
+            this.txtWeight.CustomButton.Location = new System.Drawing.Point(153, 2);
             this.txtWeight.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.txtWeight.CustomButton.Name = "";
             this.txtWeight.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -458,7 +472,7 @@
             this.txtWeight.CustomButton.Visible = false;
             this.txtWeight.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtWeight.Lines = new string[0];
-            this.txtWeight.Location = new System.Drawing.Point(225, 24);
+            this.txtWeight.Location = new System.Drawing.Point(190, 53);
             this.txtWeight.Margin = new System.Windows.Forms.Padding(2);
             this.txtWeight.MaxLength = 32767;
             this.txtWeight.Name = "txtWeight";
@@ -469,7 +483,7 @@
             this.txtWeight.SelectionLength = 0;
             this.txtWeight.SelectionStart = 0;
             this.txtWeight.ShortcutsEnabled = true;
-            this.txtWeight.Size = new System.Drawing.Size(137, 28);
+            this.txtWeight.Size = new System.Drawing.Size(179, 28);
             this.txtWeight.TabIndex = 61;
             this.txtWeight.UseSelectable = true;
             this.txtWeight.WaterMark = "Введите Вес";
@@ -481,7 +495,7 @@
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel8.Location = new System.Drawing.Point(72, 79);
+            this.metroLabel8.Location = new System.Drawing.Point(37, 137);
             this.metroLabel8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(149, 25);
@@ -494,7 +508,7 @@
             this.metroLabel9.AutoSize = true;
             this.metroLabel9.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel9.Location = new System.Drawing.Point(173, 24);
+            this.metroLabel9.Location = new System.Drawing.Point(138, 53);
             this.metroLabel9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(48, 25);
@@ -509,7 +523,7 @@
             // 
             this.txtHeight.CustomButton.Image = null;
             this.txtHeight.CustomButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtHeight.CustomButton.Location = new System.Drawing.Point(111, 2);
+            this.txtHeight.CustomButton.Location = new System.Drawing.Point(162, 2);
             this.txtHeight.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.txtHeight.CustomButton.Name = "";
             this.txtHeight.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -520,7 +534,7 @@
             this.txtHeight.CustomButton.Visible = false;
             this.txtHeight.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtHeight.Lines = new string[0];
-            this.txtHeight.Location = new System.Drawing.Point(523, 24);
+            this.txtHeight.Location = new System.Drawing.Point(612, 53);
             this.txtHeight.Margin = new System.Windows.Forms.Padding(2);
             this.txtHeight.MaxLength = 32767;
             this.txtHeight.Name = "txtHeight";
@@ -531,7 +545,7 @@
             this.txtHeight.SelectionLength = 0;
             this.txtHeight.SelectionStart = 0;
             this.txtHeight.ShortcutsEnabled = true;
-            this.txtHeight.Size = new System.Drawing.Size(137, 28);
+            this.txtHeight.Size = new System.Drawing.Size(188, 28);
             this.txtHeight.TabIndex = 58;
             this.txtHeight.UseSelectable = true;
             this.txtHeight.WaterMark = "Введите Рост";
@@ -545,7 +559,7 @@
             // 
             this.txtExc.CustomButton.Image = null;
             this.txtExc.CustomButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtExc.CustomButton.Location = new System.Drawing.Point(111, 2);
+            this.txtExc.CustomButton.Location = new System.Drawing.Point(162, 2);
             this.txtExc.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.txtExc.CustomButton.Name = "";
             this.txtExc.CustomButton.Size = new System.Drawing.Size(23, 23);
@@ -556,7 +570,7 @@
             this.txtExc.CustomButton.Visible = false;
             this.txtExc.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.txtExc.Lines = new string[0];
-            this.txtExc.Location = new System.Drawing.Point(523, 80);
+            this.txtExc.Location = new System.Drawing.Point(612, 138);
             this.txtExc.Margin = new System.Windows.Forms.Padding(2);
             this.txtExc.MaxLength = 32767;
             this.txtExc.Name = "txtExc";
@@ -567,7 +581,7 @@
             this.txtExc.SelectionLength = 0;
             this.txtExc.SelectionStart = 0;
             this.txtExc.ShortcutsEnabled = true;
-            this.txtExc.Size = new System.Drawing.Size(137, 28);
+            this.txtExc.Size = new System.Drawing.Size(188, 28);
             this.txtExc.TabIndex = 57;
             this.txtExc.UseSelectable = true;
             this.txtExc.WaterMark = "Введите Экскурсию";
@@ -579,7 +593,7 @@
             this.metroLabel10.AutoSize = true;
             this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel10.Location = new System.Drawing.Point(411, 79);
+            this.metroLabel10.Location = new System.Drawing.Point(500, 137);
             this.metroLabel10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(108, 25);
@@ -592,7 +606,7 @@
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel11.Location = new System.Drawing.Point(464, 24);
+            this.metroLabel11.Location = new System.Drawing.Point(553, 53);
             this.metroLabel11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(55, 25);
@@ -600,13 +614,119 @@
             this.metroLabel11.Text = "Рост:";
             this.metroLabel11.UseStyleColors = true;
             // 
+            // metroTabPage3
+            // 
+            this.metroTabPage3.Controls.Add(this.dtgIdealParams);
+            this.metroTabPage3.Controls.Add(this.metroLabel6);
+            this.metroTabPage3.HorizontalScrollbarBarColor = true;
+            this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage3.HorizontalScrollbarSize = 10;
+            this.metroTabPage3.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage3.Name = "metroTabPage3";
+            this.metroTabPage3.Size = new System.Drawing.Size(877, 316);
+            this.metroTabPage3.TabIndex = 2;
+            this.metroTabPage3.Text = "Идеальные параметры";
+            this.metroTabPage3.VerticalScrollbarBarColor = true;
+            this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage3.VerticalScrollbarSize = 10;
+            // 
+            // dtgIdealParams
+            // 
+            this.dtgIdealParams.AllowUserToAddRows = false;
+            this.dtgIdealParams.AllowUserToDeleteRows = false;
+            this.dtgIdealParams.AllowUserToResizeColumns = false;
+            this.dtgIdealParams.AllowUserToResizeRows = false;
+            this.dtgIdealParams.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtgIdealParams.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgIdealParams.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgIdealParams.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgIdealParams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgIdealParams.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idealAge,
+            this.idealGender,
+            this.idelExc,
+            this.idealDin});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgIdealParams.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgIdealParams.EnableHeadersVisualStyles = false;
+            this.dtgIdealParams.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dtgIdealParams.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dtgIdealParams.Location = new System.Drawing.Point(0, 90);
+            this.dtgIdealParams.Name = "dtgIdealParams";
+            this.dtgIdealParams.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgIdealParams.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgIdealParams.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dtgIdealParams.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgIdealParams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgIdealParams.Size = new System.Drawing.Size(877, 223);
+            this.dtgIdealParams.TabIndex = 3;
+            // 
+            // idealAge
+            // 
+            this.idealAge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idealAge.HeaderText = "Возраст";
+            this.idealAge.Name = "idealAge";
+            this.idealAge.ReadOnly = true;
+            // 
+            // idealGender
+            // 
+            this.idealGender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idealGender.HeaderText = "Пол";
+            this.idealGender.Name = "idealGender";
+            this.idealGender.ReadOnly = true;
+            // 
+            // idelExc
+            // 
+            this.idelExc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idelExc.HeaderText = "Экскурсия";
+            this.idelExc.Name = "idelExc";
+            this.idelExc.ReadOnly = true;
+            // 
+            // idealDin
+            // 
+            this.idealDin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idealDin.HeaderText = "Динанометрия";
+            this.idealDin.Name = "idealDin";
+            this.idealDin.ReadOnly = true;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.Location = new System.Drawing.Point(92, 24);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(710, 48);
+            this.metroLabel6.TabIndex = 2;
+            this.metroLabel6.Text = "текст текст текст текст текст текст текст текст текст текст текст текст текст тек" +
+    "ст текст текст текст текст текст текст текст текст текст текст ";
+            this.metroLabel6.WrapToLine = true;
+            // 
             // btnReg
             // 
             this.btnReg.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btnReg.Location = new System.Drawing.Point(27, 320);
+            this.btnReg.Location = new System.Drawing.Point(27, 426);
             this.btnReg.Margin = new System.Windows.Forms.Padding(2);
             this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(746, 28);
+            this.btnReg.Size = new System.Drawing.Size(877, 28);
             this.btnReg.TabIndex = 48;
             this.btnReg.Text = "Завершить регистрацию";
             this.btnReg.UseSelectable = true;
@@ -616,7 +736,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 374);
+            this.ClientSize = new System.Drawing.Size(937, 473);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btnReg);
             this.MaximizeBox = false;
@@ -629,6 +749,8 @@
             this.metroTabPage1.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
+            this.metroTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgIdealParams)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -662,5 +784,12 @@
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroComboBox cmbLevel;
+        private MetroFramework.Controls.MetroTabPage metroTabPage3;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroGrid dtgIdealParams;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idealAge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idealGender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idelExc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idealDin;
     }
 }

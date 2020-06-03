@@ -37,12 +37,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AuthForm.Designer.cs">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\AttributesExtensions.cs" />
     <Compile Include="IdealParameter.cs">
       <DependentUpon>TennisModel.tt</DependentUpon>
     </Compile>
@@ -54,6 +61,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonCard.Designer.cs">
+      <DependentUpon>PersonCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +105,9 @@
     <Compile Include="UserParameter.cs">
       <DependentUpon>TennisModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AuthForm.lkt-US.resx">
       <DependentUpon>AuthForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonCard.resx">
+      <DependentUpon>PersonCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,7 +132,9 @@
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="baza.db" />
+    <None Include="baza.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
