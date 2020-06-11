@@ -64,7 +64,7 @@ namespace TennisApp
             }
 
             var login = txtLogin.Text.Trim();
-            var passwordHash = Convert.ToBase64String(MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(txtLogin.Text.Trim())));
+            var passwordHash = Convert.ToBase64String(MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(txtPassword.Text.Trim())));
 
             var user = TennisSettings.TennisContext.Users.FirstOrDefault(u => u.login == login && u.hashPassword == passwordHash);
             if (user != null)

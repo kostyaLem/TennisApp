@@ -59,6 +59,8 @@ namespace TennisApp
                 row.Cells[1].Value = ((TrainingTypes)training.trainingTypeId).GetAttributeOfType<DescriptionAttribute>().Description;
                 row.Tag = training;
             });
+
+            dtgTrains.ClearSelection();
         }
 
         private void btnDel_Click(object sender, System.EventArgs e)
@@ -88,6 +90,8 @@ namespace TennisApp
             if (dtgTrains.SelectedRows.Count != 0)
             {
                 btnChange.Enabled = btnDel.Enabled = true;
+                btnRemoveTrain.Enabled = true;
+                btnAdd.Enabled = false;
 
                 if (dtgTrains.SelectedRows[0].Tag is Training training && training != null)
                 {
@@ -98,7 +102,9 @@ namespace TennisApp
             }
             else
             {
-                btnChange.Enabled = btnDel.Enabled = false;
+                btnRemoveTrain.Enabled = false;
+                btnAdd.Enabled = true;
+                btnChange.Enabled = false;
 
                 cmbLevel.SelectedIndex = -1;
                 cmbType.SelectedIndex = -1;
@@ -114,7 +120,7 @@ namespace TennisApp
         private void btnChange_Click(object sender, EventArgs e)
         {
             var row = dtgTrains.SelectedRows[0];
-            
+
             var training = row.Tag as Training;
             var index = row.Index;
 
@@ -136,6 +142,47 @@ namespace TennisApp
 
             UpdateDtgTrainings();
             dtgTrains.Rows[index].Selected = true;
+
+            MetroMessageBox.Show(this, $"Тренировка изменена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnRemoveTrain_Click(object sender, EventArgs e)
+        {
+            var row = dtgTrains.SelectedRows[0];
+
+            var training = row.Tag as Training;
+
+            TennisSettings.TennisContext.Trainings.Remove(training);
+            TennisSettings.TennisContext.SaveChanges();
+
+            UpdateDtgTrainings();
+
+            MetroMessageBox.Show(this, $"Тренировка удалена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (cmbLevel.SelectedIndex == -1 || cmbType.SelectedIndex == -1 || string.IsNullOrEmpty(txtText.Text))
+            {
+                MetroMessageBox.Show(this, $"Заполните все поля для добавления тренировки", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var train = new Training()
+            {
+                level = cmbLevel.SelectedIndex + 1,
+                trainingTypeId = cmbType.SelectedIndex + 1,
+                textTraining = txtText.Text.Trim()
+            };
+
+            TennisSettings.TennisContext.Trainings.Add(train);
+            TennisSettings.TennisContext.SaveChanges();
+
+            UpdateDtgTrainings();
+
+            MetroMessageBox.Show(this, $"Тренировка добавлена", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            dtgTrains.Rows[dtgTrains.Rows.Count - 1].Selected = true;
         }
     }
 }
